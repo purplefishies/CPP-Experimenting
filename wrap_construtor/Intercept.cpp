@@ -15,8 +15,6 @@ Car::Car(int yr, int mil)
             // "search this symbol in any libraries loaded after the current one".
             void *tmpPtr = dlsym(RTLD_NEXT, "_ZN3CarC1Eii");
             
-            // not even reinterpret_cast can convert between void* and a method ptr,
-            // so i'm doing the worst hack i've ever seen.
             memcpy(&origMethod, &tmpPtr, sizeof(&tmpPtr));
         }
     
