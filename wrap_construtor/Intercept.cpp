@@ -13,6 +13,8 @@ Car::Car(int yr, int mil)
         {
             // use the mangled method name here. RTLD_NEXT means something like
             // "search this symbol in any libraries loaded after the current one".
+            // We had to go searching for the original function name using
+            // nm libwraptest.so
             void *tmpPtr = dlsym(RTLD_NEXT, "_ZN3CarC1Eii");
             
             memcpy(&origMethod, &tmpPtr, sizeof(&tmpPtr));
